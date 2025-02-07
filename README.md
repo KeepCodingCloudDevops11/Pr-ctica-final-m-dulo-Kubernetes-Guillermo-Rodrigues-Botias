@@ -24,7 +24,7 @@ Debemos cumplir los siguientes puntos:
 
 **Requisitos previos**
 
-Tenemos que asegurarnos de tener instalado lo siguiente, se tendrá que mirar la documentación ofifical ya que cambiara en función del sistema operativo:
+Tenemos que asegurarnos de tener instalado lo siguiente, se tendrá que mirar la documentación ofifical ya que cambiara en función del sistema operativo, en este caso para windows; [Minikiube](https://minikube.sigs.k8s.io/docs/start/?arch=%2Fwindows%2Fx86-64%2Fstable%2F.exe+download); [kubectl](https://kubernetes.io/es/docs/tasks/tools/included/install-kubectl-windows/); [Helm](https://helm.sh/es/docs/intro/install/); [Docker desktop](https://docs.docker.com/desktop/setup/install/windows-install/)
 
 * Docker Desktop, una vez instalado habilitamos la función de Kubernetes dentro de la configuración y lo reiniciamos.
 
