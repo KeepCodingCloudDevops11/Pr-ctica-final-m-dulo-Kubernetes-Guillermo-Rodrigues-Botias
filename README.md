@@ -378,4 +378,4 @@ kubectl get svc
 
 [Aplicacion funcionando con nodeport](https://github.com/KeepCodingCloudDevops11/Practica-final-modulo-Kubernetes-Guillermo-Rodrigues-Botias/blob/main/img/Aplicacion%20funcionando%20a%20traves%20de%20nodeport.png)
 
-
+Si al entrar vemos la web de wordpress significa que que está corriendo correctamente nuestra aplicación y hemos tenido éxito.
