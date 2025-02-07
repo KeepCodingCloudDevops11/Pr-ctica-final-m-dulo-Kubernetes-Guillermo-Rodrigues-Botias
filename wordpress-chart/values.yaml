@@ -1,0 +1,35 @@
+# values.yaml
+
+# Parámetros globales
+replicaCount: 2
+
+image:
+  wordpress:
+    repository: wordpress
+    tag: "php7.4-apache"   # Puedes usar la versión que desees
+    pullPolicy: IfNotPresent
+  mariadb:
+    repository: mariadb
+    tag: "10.5"
+    pullPolicy: IfNotPresent
+
+service:
+  wordpress:
+    type: LoadBalancer
+    port: 80
+
+mariadb:
+  database: wordpress
+  # Credenciales sensibles: las definimos aquí para usarlas en el Secret.
+  username: gato
+  password: cuadro
+  persistence:
+    enabled: true
+    storageClass: "standard"  # Para Minikube suele ser "standard" o "default"
+    size: 1Gi
+
+hpa:
+  enabled: true
+  minReplicas: 2
+  maxReplicas: 5
+  targetCPUUtilizationPercentage: 70

@@ -1,0 +1,50 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ include "wordpress-chart.fullname" . }}-mariadb
+  labels:
+    app: {{ include "wordpress-chart.name" . }}
+    tier: mariadb
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: {{ include "wordpress-chart.name" . }}
+      tier: mariadb
+  template:
+    metadata:
+      labels:
+        app: {{ include "wordpress-chart.name" . }}
+        tier: mariadb
+    spec:
+      containers:
+        - name: mariadb
+          image: "{{ .Values.image.mariadb.repository }}:{{ .Values.image.mariadb.tag }}"
+          imagePullPolicy: {{ .Values.image.mariadb.pullPolicy }}
+          env:
+            - name: MYSQL_ROOT_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: {{ include "wordpress-chart.fullname" . }}-db-secret
+                  key: password
+            - name: MYSQL_DATABASE
+              value: "{{ .Values.mariadb.database }}"
+            - name: MYSQL_USER
+              valueFrom:
+                secretKeyRef:
+                  name: {{ include "wordpress-chart.fullname" . }}-db-secret
+                  key: username
+            - name: MYSQL_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: {{ include "wordpress-chart.fullname" . }}-db-secret
+                  key: password
+          ports:
+            - containerPort: 3306
+          volumeMounts:
+            - name: mariadb-storage
+              mountPath: /var/lib/mysql
+      volumes:
+        - name: mariadb-storage
+          persistentVolumeClaim:
+            claimName: {{ include "wordpress-chart.fullname" . }}-mariadb-pvc

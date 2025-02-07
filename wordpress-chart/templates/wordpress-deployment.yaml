@@ -1,0 +1,51 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ include "wordpress-chart.fullname" . }}-wordpress
+  labels:
+    app: {{ include "wordpress-chart.name" . }}
+    tier: wordpress
+spec:
+  replicas: {{ .Values.replicaCount }}
+  selector:
+    matchLabels:
+      app: {{ include "wordpress-chart.name" . }}
+      tier: wordpress
+  template:
+    metadata:
+      labels:
+        app: {{ include "wordpress-chart.name" . }}
+        tier: wordpress
+    spec:
+      containers:
+        - name: wordpress
+          image: "{{ .Values.image.wordpress.repository }}:{{ .Values.image.wordpress.tag }}"
+          ports:
+            - containerPort: 80
+          env:
+            - name: WORDPRESS_DB_HOST
+              value: "{{ include "wordpress-chart.fullname" . }}-mariadb:3306"
+            - name: WORDPRESS_DB_USER
+              valueFrom:
+                secretKeyRef:
+                  name: {{ include "wordpress-chart.fullname" . }}-db-secret
+                  key: username
+            - name: WORDPRESS_DB_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: {{ include "wordpress-chart.fullname" . }}-db-secret
+                  key: password
+            - name: WORDPRESS_DB_NAME
+              value: "{{ .Values.mariadb.database }}"
+          livenessProbe:
+            httpGet:
+              path: /
+              port: 80
+            initialDelaySeconds: 30
+            periodSeconds: 10
+          readinessProbe:
+            httpGet:
+              path: /
+              port: 80
+            initialDelaySeconds: 10
+            periodSeconds: 5
