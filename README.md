@@ -329,6 +329,9 @@ spec:
           averageUtilization: {{ .Values.hpa.targetCPUUtilizationPercentage }}
 {{- end }}
 ```
+[Instalación](https://github.com/KeepCodingCloudDevops11/Practica-final-modulo-Kubernetes-Guillermo-Rodrigues-Botias/blob/main/img/Instalacion.png)
+[Recursos creados](https://github.com/KeepCodingCloudDevops11/Practica-final-modulo-Kubernetes-Guillermo-Rodrigues-Botias/blob/main/img/Todo%20creado.png)
+
 
 ## Tercera Parte
 
@@ -369,5 +372,10 @@ en la otra terminal vamos a verficar la ip y puerto con la que podemos entrar a 
 kubectl get svc
 ```
 [Muestra de ip y app corriendo](https://github.com/KeepCodingCloudDevops11/Practica-final-modulo-Kubernetes-Guillermo-Rodrigues-Botias/blob/main/img/funcionamiento%20aplicacion%20con%20LoadBalancer.png)
+
+* Primeramente hicimos una prueba de la aplicación con acceso a través de [nodeport](https://github.com/KeepCodingCloudDevops11/Practica-final-modulo-Kubernetes-Guillermo-Rodrigues-Botias/blob/main/img/Acceso%20por%20nodeport.png)
+
+
+[Aplicacion funcionando con nodeport](https://github.com/KeepCodingCloudDevops11/Practica-final-modulo-Kubernetes-Guillermo-Rodrigues-Botias/blob/main/img/Aplicacion%20funcionando%20a%20traves%20de%20nodeport.png)
 
 
