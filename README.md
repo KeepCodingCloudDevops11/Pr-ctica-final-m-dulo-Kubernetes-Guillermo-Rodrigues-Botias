@@ -4,7 +4,7 @@ Práctica final módulo Kubernetes Guillermo Rodrigues Botias
 ## INDICE
 
 * [*Primera parte*](#primera-parte) : Objetivos de la práctica y requisitos.
-* [*Segunda parte*](#segunda-parte) :
+* [*Segunda parte*](#segunda-parte) : Creación de chart
 * [*Tercera parte*](#tercera-parte) :
 * [*Cuarta parte*](#cuarta-parte) :
 
@@ -42,3 +42,20 @@ kubectl version
 ```bash
 helm version
 ```
+* Si es necesario actualizaremos los repositorios de bitnami con
+
+  ```bash
+  helm repo add bitnami https://charts.bitnami.com/bitnami
+  helm repo update
+  ```
+
+## Segunda Parte
+
+Vamos a crear un chart de Helm incluyendo todos los recursos (Wordpress, MariaDB, Secrets, PVC, HPA, VAlues, _helpers, deployment, SVC)
+
+La herramienta Helm nos falcilita el trabajo, nos dirigiremos a nuestra carpeta raiz de nuestro proyecto y una vez ahí, iniciamos el siguiente comando:
+
+```bash
+helm create wordpress-chart
+```
+lo que nos dará la siguiente estructura 
