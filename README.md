@@ -58,4 +58,6 @@ La herramienta Helm nos falcilita el trabajo, nos dirigiremos a nuestra carpeta 
 ```bash
 helm create wordpress-chart
 ```
-lo que nos dará la siguiente estructura 
+lo que nos dará la siguiente [estructura inicial](https://github.com/KeepCodingCloudDevops11/Practica-final-modulo-Kubernetes-Guillermo-Rodrigues-Botias/blob/main/img/Creacion%20Estructura.png) 
+* Borraremos y crearemos los archivos necesarios para finalmente dejar una [estructura final](https://github.com/KeepCodingCloudDevops11/Practica-final-modulo-Kubernetes-Guillermo-Rodrigues-Botias/blob/main/img/Estructura%20final.png)
+
