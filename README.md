@@ -26,6 +26,10 @@ Debemos cumplir los siguientes puntos:
 
 Tenemos que asegurarnos de tener instalado lo siguiente, se tendrá que mirar la documentación ofifical ya que cambiara en función del sistema operativo, en este caso para windows; [Minikiube](https://minikube.sigs.k8s.io/docs/start/?arch=%2Fwindows%2Fx86-64%2Fstable%2F.exe+download); [kubectl](https://kubernetes.io/es/docs/tasks/tools/included/install-kubectl-windows/); [Helm](https://helm.sh/es/docs/intro/install/); [Docker desktop](https://docs.docker.com/desktop/setup/install/windows-install/)
 
+* Podemos descargamos el repositorio si queremos hacerlo más rápido
+```bash
+git clone https://github.com/KeepCodingCloudDevops11/Practica-final-modulo-Kubernetes-Guillermo-Rodrigues-Botias.git
+```
 * Docker Desktop, una vez instalado habilitamos la función de Kubernetes dentro de la configuración y lo reiniciamos.
 
 * Minikube, comando para iniciarlo
@@ -51,7 +55,13 @@ helm version
 
 ## Segunda Parte
 
-Vamos a crear un chart de Helm incluyendo todos los recursos (Wordpress, MariaDB, Secrets, PVC, HPA, VAlues, _helpers, deployment, SVC)
+* Primero iniciamos minikube
+
+```bash
+minikube start
+```
+
+* Vamos a crear un chart de Helm incluyendo todos los recursos (Wordpress, MariaDB, Secrets, PVC, HPA, VAlues, _helpers, deployment, SVC)
 
 La herramienta Helm nos falcilita el trabajo, nos dirigiremos a nuestra carpeta raiz de nuestro proyecto y una vez ahí, iniciamos el siguiente comando:
 
