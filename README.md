@@ -6,7 +6,7 @@ Práctica final módulo Kubernetes Guillermo Rodrigues Botias
 * [*Primera parte*](#primera-parte) : Objetivos de la práctica y requisitos.
 * [*Segunda parte*](#segunda-parte) : Creación de chart
 * [*Tercera parte*](#tercera-parte) : Despliegue de aplicación
-* [*Cuarta parte*](#cuarta-parte) :
+* [*Cuarta parte*](#cuarta-parte) : Comprobación de aplicacón
 
 
 ## Primera Parte
@@ -337,3 +337,37 @@ Procedemos a desplegar la aplicación, nos ubicamos en el directorio raíz y eje
 ```bash
 helm install mi-wordpress .
 ```
+
+Verificaremos que todos los recursos se han creado correctamente  usando
+
+```bash
+kubectl get pods "comprobar pods"
+kubectl get svc "comprobar services"
+kubectl get deployments "comprobar deployments"
+kubectl get secrets "comprobar secrets"
+kubectl get pvc "comprobar PersistentVolumeClaim"
+kubectl get hpa "comprobar Horizontal Pod Autoescaler"
+```
+
+Si actualizamos algún archivo, debemos actualizar el chart
+
+```bash
+helm upgrade mi-wordpress
+```
+
+## Cuarta Parte
+
+PAra comprobar que el desplieugue de nuestra aplicación funciona correctamente, en este caso la hemos configurado con LoadBalancer, para hacerlo debemos abrir una segunda terminal y usar el siguiente comando
+
+```bash
+minikube tunnel
+```
+[Muestra de tunnel funcionando](https://github.com/KeepCodingCloudDevops11/Practica-final-modulo-Kubernetes-Guillermo-Rodrigues-Botias/blob/main/img/Rectificacion%20Funcionamiento%20aplicacion%20LoadBalancer.png)
+en la otra terminal vamos a verficar la ip y puerto con la que podemos entrar a nuestra aplicación desde el navegador
+
+```bash
+kubectl get svc
+```
+[Muestra de ip y app corriendo](https://github.com/KeepCodingCloudDevops11/Practica-final-modulo-Kubernetes-Guillermo-Rodrigues-Botias/blob/main/img/funcionamiento%20aplicacion%20con%20LoadBalancer.png)
+
+
